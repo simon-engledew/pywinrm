@@ -401,7 +401,7 @@ class Protocol(object):
             except WinRMOperationTimeoutError as e:
                 # this is an expected error when waiting for a long-running process, just silently retry
                 pass
-        return b''.join(stdout_buffer), b''.join(stderr_buffer), return_code
+        return b''.join(stdout_buffer).decode('cp850'), b''.join(stderr_buffer).decode('cp850'), return_code
 
     def _raw_get_command_output(self, shell_id, command_id):
         req = {'env:Envelope': self._get_soap_header(
